@@ -5,6 +5,12 @@ from deep_translator import GoogleTranslator
 from textblob import TextBlob
 import os
 import threading
+from flask import send_file
+
+@app.route("/download")
+def download_file():
+    return send_file("wordsheet.docx", as_attachment=True)
+
 
 app = Flask(__name__)
 CORS(app)
@@ -12,6 +18,8 @@ CORS(app)
 @app.route("/")
 def home():
     return "Vocabulary API is running"
+
+
 
 file_name = "wordsheet.docx"
 lock = threading.Lock()
