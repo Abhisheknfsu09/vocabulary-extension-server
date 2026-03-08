@@ -7,13 +7,14 @@ import os
 import threading
 from flask import send_file
 
-@app.route("/download")
-def download_file():
-    return send_file("wordsheet.docx", as_attachment=True)
 
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/download")
+def download_file():
+    return send_file("wordsheet.docx", as_attachment=True)
 
 @app.route("/")
 def home():
